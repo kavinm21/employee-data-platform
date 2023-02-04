@@ -21,5 +21,13 @@ def index():
 def logout():
    return redirect(url_for('home'))
 
+@app.route('/display')
+def display():
+   return render_template('display.html')
+
+@app.route('/update')
+def update():
+   return render_template('update.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
