@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, jsonify
+from sql_actions import DB_Ops
 app = Flask(__name__)
 
 @app.route('/')
@@ -28,6 +29,11 @@ def display():
 @app.route('/update')
 def update():
    return render_template('update.html')
+
+@app.route('/api/fetchall', methods=['GET', 'POST'])
+def fetch_all():
+   data = DB_Ops().fetch_all()
+   return jsonify(data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
