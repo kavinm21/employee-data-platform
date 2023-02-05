@@ -5,3 +5,5 @@ A data store app for fulfilling Cloud Computing Coursework Requirements
 SQL, Flask, Python
 
 # API:
+
+## 1. url/api/fetchall
