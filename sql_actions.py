@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+
 selectall_query = '''
 SELECT
     e.id, e.first_name, e.last_name, e.date_of_birth, e.gender,
