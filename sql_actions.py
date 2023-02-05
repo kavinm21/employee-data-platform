@@ -3,15 +3,15 @@ from mysql.connector import Error
 
 selectall_query = '''
 SELECT
-    e.id, e.first_name, e.last_name, e.date_of_birth, e.gender,
-    d.department_id, d.department_name, d.employee_role, d.employee_salary,
+    e.id, e.first_name, e.last_name, e.date_of_birth, e.gender, e.employee_role,
+    d.department_id, d.department_name, d.employee_salary,
     a.house_no, a.street_name, a.city, a.state, a.country, a.pincode
 FROM
     employee e
 INNER JOIN department d ON
-    e.id = d.employee_id
+    e.d_id = d.department_id
 INNER JOIN address a ON
-    e.id = a.employee_id
+    e.id = a.e_id
 '''
 host_name = '127.0.0.1'
 user_name = 'flask'
@@ -23,7 +23,7 @@ class DB_Ops:
         self.connection = None
         try:
             self.connection = mysql.connector.connect(
-                host=host_name, user=user_name, passwd=pword, database='employee_schema')
+                host=host_name, user=user_name, passwd=pword, database='employee_db')
             print("Connected to MySQL")
         except Error as err:
             print(f"Error: '{err}'")

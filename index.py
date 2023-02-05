@@ -35,9 +35,9 @@ def fetch_all():
    data = DB_Ops().fetch_all()
    return jsonify(data)
 
-#@app.route('/api/fetchone', methods=['GET', 'POST'])
+#@app.route('/api/fetchone/<>', methods=['GET', 'POST'])
 #def fetch_one():
    
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+   app.run(host='0.0.0.0', port=5001, debug=True)
