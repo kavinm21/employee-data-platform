@@ -12,34 +12,43 @@ INNER JOIN department d ON
 INNER JOIN address a ON
     e.id = a.employee_id
 '''
+host_name = '127.0.0.1'
+user_name = 'flask'
+pword = 'flask'
+
 
 class DB_Ops:
-    def __init__(self, host_name, user_name, pword):
+    def __init__(self):
         self.connection = None
         try:
-            self.connection = mysql.connector.connect(host=host_name,user=user_name,passwd=pword, database='employee_schema')
+            self.connection = mysql.connector.connect(
+                host=host_name, user=user_name, passwd=pword, database='employee_schema')
             print("Connected to MySQL")
         except Error as err:
             print(f"Error: '{err}'")
+
     def fetch_one(self, emp_id):
-        cursor = self.connection.cursor()  
+        cursor = self.connection.cursor()
         query = selectall_query + " where e.id = " + str(emp_id)
         cursor.execute(query)
-        result = [dict((cursor.description[i][0], value) \
-               for i, value in enumerate(row)) for row in cursor.fetchall()]
+        result = [dict((cursor.description[i][0], value)
+                       for i, value in enumerate(row)) for row in cursor.fetchall()]
         cursor.close()
+
     def fetch_all(self):
         cursor = self.connection.cursor()
         cursor.execute(selectall_query)
-        result = [dict((cursor.description[i][0], value) \
-               for i, value in enumerate(row)) for row in cursor.fetchall()]
+        result = [dict((cursor.description[i][0], value)
+                       for i, value in enumerate(row)) for row in cursor.fetchall()]
         cursor.close()
         return result
+
     def __del__(self):
         self.connection.close()
         print('Closing MySQL Connection')
 
+
 if __name__ == '__main__':
-    sql = DB_Ops('127.0.0.1', 'flask', 'flask')
+    sql = DB_Ops()
     data = sql.fetch_all()
     print(data)
