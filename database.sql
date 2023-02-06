@@ -8,26 +8,26 @@ CREATE TABLE `employee_db`.`department` (
 );
 
 CREATE TABLE `employee_db`.`employee` (
-    `id` INT NOT NULL,
-    `first_name` VARCHAR(45) NULL,
-    `last_name` VARCHAR(45) NULL,
-    `date_of_birth` DATE NULL,
-    `gender` CHAR(100) NULL,
-    `d_id` INT NULL,
-    `employee_role` VARCHAR(45) NULL,
-    PRIMARY KEY (`id`),
-    FOREIGN KEY (`d_id`) REFERENCES `employee_db`.`department` (`department_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    id INT NOT NULL,
+    first_name VARCHAR(45) NULL,
+    last_name VARCHAR(45) NULL,
+    date_of_birth DATE NULL,
+    gender CHAR(100) NULL,
+    d_id INT NULL,
+    employee_role VARCHAR(45) NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (d_id) REFERENCES `employee_db`.`department` (department_id) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE `employee_db`.`address` (
-    `e_id` INT NOT NULL,
-    `house_no` INT NULL,
-    `street_name` VARCHAR(45) NULL,
-    `city` VARCHAR(45) NULL,
-    `state` VARCHAR(45) NULL,
-    `country` VARCHAR(45) NULL,
-    `pincode` BIGINT(20) NULL,
-    FOREIGN KEY (`e_id`) REFERENCES `employee_db`.`employee` (`id`)
+    e_id INT NOT NULL,
+    house_no INT NULL,
+    street_name VARCHAR(45) NULL,
+    city VARCHAR(45) NULL,
+    state VARCHAR(45) NULL,
+    country VARCHAR(45) NULL,
+    pincode BIGINT(20) NULL,
+    FOREIGN KEY (e_id) REFERENCES `employee_db`.`employee` (id)
 );
 
 INSERT INTO
