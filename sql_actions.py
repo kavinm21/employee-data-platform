@@ -24,7 +24,7 @@ class DB_Ops:
         try:
             self.connection = mysql.connector.connect(
                 host=host_name, user=user_name, passwd=pword, database='employee_db')
-            print("Connected to MySQL")
+            print("Connected to RDS MySQL")
         except Error as err:
             print(f"Error: '{err}'")
 
