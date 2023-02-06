@@ -1,10 +1,10 @@
 use employee_db;
 
 CREATE TABLE `employee_db`.`department` (
-    `department_id` INT NOT NULL,
-    `department_name` VARCHAR(45) NULL,
-    `employee_salary` DOUBLE NULL,
-    PRIMARY KEY(`department_id`)
+    department_id INT NOT NULL,
+    department_name VARCHAR(45) NULL,
+    employee_salary DOUBLE NULL,
+    PRIMARY KEY(department_id)
 );
 
 CREATE TABLE `employee_db`.`employee` (

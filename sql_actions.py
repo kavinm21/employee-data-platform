@@ -13,9 +13,9 @@ INNER JOIN department d ON
 INNER JOIN address a ON
     e.id = a.e_id
 '''
-host_name = '127.0.0.1'
-user_name = 'flask'
-pword = 'flask'
+host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
+user_name = 'admin'
+pword = 'Password1!'
 
 
 class DB_Ops:
@@ -51,5 +51,5 @@ class DB_Ops:
 
 if __name__ == '__main__':
     sql = DB_Ops()
-    data = sql.fetch_all()
-    print(data)
+#    data = sql.fetch_all()
+#    print(data)
