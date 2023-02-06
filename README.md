@@ -6,4 +6,5 @@ SQL, Flask, Python
 
 # API:
 
-## 1. url/api/fetchall
+1. https://employee-data-platform.vercel.app//api/fetchall :
+Fetches all the data for all employees in the database
