@@ -1,5 +1,4 @@
-import mysql.connector
-from mysql.connector import Error
+import pymysql
 
 selectall_query = '''
 SELECT
@@ -22,7 +21,7 @@ class DB_Ops:
     def __init__(self):
         self.connection = None
         try:
-            self.connection = mysql.connector.connect(
+            self.connection = pymysql.connect(
                 host=host_name, user=user_name, passwd=pword, database='employee_db')
             print("Connected to RDS MySQL")
         except Error as err:
@@ -46,7 +45,7 @@ class DB_Ops:
 
     def __del__(self):
         self.connection.close()
-        print('Closing MySQL Connection')
+        print('Closing RDS MySQL Connection')
 
 
 if __name__ == '__main__':
