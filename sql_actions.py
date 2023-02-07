@@ -30,9 +30,9 @@ class DB_Ops:
 
     def fetch_one(self, emp_id):
         cursor = self.connection.cursor()
-        query = selectall_query + " where e.id = " + str(emp_id)
-        print("Query:\n", query,sep='')
-        cursor.execute(query)
+        query = selectall_query + " where e.id = %i"
+        print(emp_id, " Query:\n", query,sep='')
+        cursor.execute(query, (emp_id))
         result = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
         cursor.close()
@@ -52,5 +52,5 @@ class DB_Ops:
 
 if __name__ == '__main__':
     sql = DB_Ops()
-    data = sql.fetch_all()
+    data = sql.fetch_one('105')
     print(data)
