@@ -31,15 +31,7 @@ INSERT INTO
         employee_role
     )
 VALUES
-(
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    );
+({},{},{},{},{},{},{});
 '''
 
 insert_one_addr_query = '''
@@ -54,15 +46,7 @@ INSERT INTO
         pincode
     )
 VALUES
-(
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    );
+({},{},{},{},{},{},{});
 '''
 
 
@@ -78,7 +62,7 @@ class DB_Ops:
             self.connection = pymysql.connect(
                 host=host_name, user=user_name, passwd=pword, database='employee_db')
             print("Connected to MySQL")
-        except Error as err:
+        except Exception as err:
             print(f"Error: '{err}'")
 
     def fetch_one(self, emp_id):
@@ -102,16 +86,18 @@ class DB_Ops:
         try:
             cursor = self.connection.cursor()
             query = insert_one_emp_query.format(emp_data['id'],
-                                                emp_data['first_name'],
-                                                emp_data['last_name'],
-                                                emp_data['date_of_birth'],
-                                                emp_data['gender'],
+                                                "'"+emp_data['first_name']+"'",
+                                                "'"+emp_data['last_name']+"'",
+                                                "'"+emp_data['date_of_birth']+"'",
+                                                "'"+emp_data['gender']+"'",
                                                 emp_data['department_id'],
-                                                emp_data['employee_role']
+                                                "'"+emp_data['employee_role']+"'"
                                                )
+            print(query)
+            cursor.execute(query)
             cursor.close()
             result = "Successfully inserted!!"
-        except Error as err:
+        except Exception as err:
             result = err
 #             print(f"Error: '{err}'")
         return result
@@ -120,36 +106,44 @@ class DB_Ops:
         try:
             cursor = self.connection.cursor()
             query = insert_one_dept_query.format(dept_data['department_id'],
-                                                dept_data['department_name'],
+                                                "'"+dept_data['department_name']+"'",
                                                 dept_data['employee_salary']
                                                 )
+            cursor.execute(query)
             cursor.close()
             result = "Successfully inserted!!"
-        except Error as err:
+        except Exception as err:
             result = err
             print(f"Error: '{err}'")
         return result
+
     def insert_one_addr(self, addr_data):
         try:
             cursor = self.connection.cursor()
             query = insert_one_addr_query.format(addr_data['id'],
                                                 addr_data['house_no'],
-                                                addr_data['street_name'],
-                                                addr_data['city'],
-                                                addr_data['state'],
-                                                addr_data['country'],
+                                                "'"+addr_data['street_name']+"'",
+                                                "'"+addr_data['city']+"'",
+                                                "'"+addr_data['state']+"'",
+                                                "'"+addr_data['country']+"'",
                                                 addr_data['pincode']
                                                 )
+            cursor.execute(query)
             cursor.close()
             result = "Successfully inserted!!"
-        except Error as err:
+        except Exception as err:
             result = err
             print(f"Error: '{err}'")
         return result
-
+'''
+    def update(self, emp_data):
+        try:
+            cursor = self.connection.cursor()
+            query = 'UPDATE '+ 
     def __del__(self):
         self.connection.close()
         print('Closing MySQL Connection')
+'''
 
 
 if __name__ == '__main__':
