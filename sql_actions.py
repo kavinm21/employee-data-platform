@@ -31,7 +31,6 @@ class DB_Ops:
         cursor = self.connection.cursor()
         query = selectall_query + " where e.id = {}".format(emp_id)
         cursor.execute(query)
-        print(emp_id, " Query:\n", cursor.statement,sep='')
         result = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
         return result
