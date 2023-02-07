@@ -49,19 +49,29 @@ def fetch_one():
 def add_employee():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
-        id_key = request.json
-        emp_data = jsonify(data)
-        result_emp = DB_Ops().insert_one_emp_query(emp_data)
+        emp_data = request.json
+        #emp_data = jsonify(data)
+        result_emp = DB_Ops().insert_one_emp(emp_data)
         print(result_emp)
-        result_dept = DB_Ops().insert_one_dept_query(emp_data)
+        result_dept = DB_Ops().insert_one_dept(emp_data)
         print(result_dept)
-        result_addr = DB_Ops().insert_one_addr_query(emp_data)
+        result_addr = DB_Ops().insert_one_addr(emp_data)
         print(result_addr)
-    if result_emp == 'Successfully inserted!!' and result_dept == 'Successfully inserted!!' and result_addr == 'Successfully inserted!!':
-        return "Successfully inserted!!"
+        if result_emp == 'Successfully inserted!!' and result_dept == 'Successfully inserted!!' and result_addr == 'Successfully inserted!!':
+         return "Successfully inserted!!"
+        else:
+         return "Oops!! Failed :/"
     else:
-        return "Oops!! Failed :/"
+      return 'Content-Type not supported! Send JSON Content'
 
+'''
+@app.route('/api/updateDetails', methods=['POST', 'GET'])
+def update_details():
+      content_type = request.headers.get('Content-Type')
+      if content_type == 'application/json':
+         emp_data = request.json
+         data = DB_Ops().update(emp_data)
+'''
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=5001, debug=True)
