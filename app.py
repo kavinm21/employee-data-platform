@@ -40,7 +40,7 @@ def fetch_one():
    content_type = request.headers.get('Content-Type')
    if content_type == 'application/json':
       id_key = request.json
-      data = DB_Ops().fetch_one(id_key.ID)
+      data = DB_Ops().fetch_one(id_key['id'])
       return jsonify(data)
    else:
       return 'Content-Type not supported! Send JSON Content'

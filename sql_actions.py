@@ -31,6 +31,7 @@ class DB_Ops:
     def fetch_one(self, emp_id):
         cursor = self.connection.cursor()
         query = selectall_query + " where e.id = " + str(emp_id)
+        print("Query:\n", query,sep='')
         cursor.execute(query)
         result = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
