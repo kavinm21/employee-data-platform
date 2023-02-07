@@ -1,5 +1,4 @@
-import mysql.connector
-from mysql.connector import Error
+import pymysql
 
 selectall_query = '''
 SELECT
@@ -67,16 +66,16 @@ VALUES
 '''
 
 
-host_name = '127.0.0.1'
-user_name = 'flask'
-pword = 'flask'
+host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
+user_name = 'admin'
+pword = 'Password1!'
 
 
 class DB_Ops:
     def __init__(self):
         self.connection = None
         try:
-            self.connection = mysql.connector.connect(
+            self.connection = pymysql.connect(
                 host=host_name, user=user_name, passwd=pword, database='employee_db')
             print("Connected to MySQL")
         except Error as err:
