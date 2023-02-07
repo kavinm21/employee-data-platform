@@ -43,7 +43,7 @@ def fetch_one():
       data = DB_Ops().fetch_one(id_key['id'])
       return jsonify(data)
    else:
-      return 'Content-httType not supported! Send JSON Content'
+      return 'Content-Type not supported! Send JSON Content'
 
 @app.route('/api/addEmp', methods=['POST', 'GET'])
 def add_employee():
