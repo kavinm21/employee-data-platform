@@ -24,7 +24,7 @@ class DB_Ops:
             self.connection = pymysql.connect(
                 host=host_name, user=user_name, passwd=pword, database='employee_db')
             print("Connected to RDS MySQL")
-        except Error as err:
+        except pymysql.Error as err:
             print(f"Error: '{err}'")
 
     def fetch_one(self, emp_id):
