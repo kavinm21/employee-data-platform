@@ -46,7 +46,7 @@ def fetch_one():
       return 'Content-httType not supported! Send JSON Content'
 
 @app.route('/api/addEmp', methods=['POST', 'GET'])
-def add_student():
+def add_employee():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         id_key = request.json
