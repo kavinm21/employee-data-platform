@@ -43,7 +43,25 @@ def fetch_one():
       data = DB_Ops().fetch_one(id_key['id'])
       return jsonify(data)
    else:
-      return 'Content-Type not supported! Send JSON Content\n'
+      return 'Content-httType not supported! Send JSON Content'
+
+@app.route('/api/addEmp', methods=['POST', 'GET'])
+def add_student():
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':
+        id_key = request.json
+        emp_data = jsonify(data)
+        result_emp = DB_Ops().insert_one_emp_query(emp_data)
+        print(result_emp)
+        result_dept = DB_Ops().insert_one_dept_query(emp_data)
+        print(result_dept)
+        result_addr = DB_Ops().insert_one_addr_query(emp_data)
+        print(result_addr)
+    if result_emp == 'Successfully inserted!!' and result_dept == 'Successfully inserted!!' and result_addr == 'Successfully inserted!!':
+        return "Successfully inserted!!"
+    else:
+        return "Oops!! Failed :/"
+
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=5001, debug=True)
