@@ -23,8 +23,8 @@ class DB_Ops:
         try:
             self.connection = pymysql.connect(
                 host=host_name, user=user_name, passwd=pword, database='employee_db')
-            print("Connected to RDS MySQL")
-        except pymysql.Error as err:
+            print("Connected to MySQL")
+        except Error as err:
             print(f"Error: '{err}'")
 
     def fetch_one(self, emp_id):
@@ -51,5 +51,5 @@ class DB_Ops:
 
 if __name__ == '__main__':
     sql = DB_Ops()
-    data = sql.fetch_one(105)
+    data = sql.fetch_all()
     print(data)

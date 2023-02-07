@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for, jsonify
+from flask import Flask, render_template, request, redirect, session, url_for, jsonify, json
 from sql_actions import DB_Ops
 app = Flask(__name__)
 
@@ -35,9 +35,15 @@ def fetch_all():
    data = DB_Ops().fetch_all()
    return jsonify(data)
 
-#@app.route('/api/fetchone/<>', methods=['GET', 'POST'])
-#def fetch_one():
-   
+@app.route('/api/fetchone', methods=['GET', 'POST'])
+def fetch_one():
+   content_type = request.headers.get('Content-Type')
+   if content_type == 'application/json':
+      id_key = request.json
+      data = DB_Ops().fetch_one(id_key['id'])
+      return jsonify(data)
+   else:
+      return 'Content-Type not supported! Send JSON Content\n'
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=5001, debug=True)
