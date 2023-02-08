@@ -103,8 +103,9 @@ class DB_Ops:
                                                )
             print(query)
             cursor.execute(query)
+            cursor.connection.commit()
             cursor.close()
-            result = "Successfully inserted!!"
+            result = "Successfully inserted employee!!"
         except Exception as err:
             result = err
 #             print(f"Error: '{err}'")
@@ -121,8 +122,9 @@ class DB_Ops:
                                                     dept_data['employee_salary']
                                                     )
                 cursor.execute(query)
+                cursor.connection.commit()
                 cursor.close()
-                result = "Successfully inserted!!"
+                result = "Successfully inserted department!!"
         except Exception as err:
             result = err
             print(f"Error: '{err}'")
@@ -131,7 +133,7 @@ class DB_Ops:
     def insert_one_addr(self, addr_data):
         try:
             cursor = self.connection.cursor()
-            query = insert_one_addr_query.format(addr_data['id'],
+            query = insert_one_addr_query.format(addr_data['e_id'],
                                                 addr_data['house_no'],
                                                 "'"+addr_data['street_name']+"'",
                                                 "'"+addr_data['city']+"'",
@@ -141,13 +143,16 @@ class DB_Ops:
                                                 )
             print(query)
             cursor.execute(query)
+            cursor.connection.commit()
             cursor.close()
-            result = "Successfully inserted!!"
+            result = "Successfully inserted address!!"
         except Exception as err:
             result = err
             print(f"Error: '{err}'")
         return result
+
 #    def update(self, emp_data):
+#    emp     
 #        try:
 #            cursor = self.connection.cursor()
 #            query = 'UPDATE '+ 
@@ -160,10 +165,23 @@ class DB_Ops:
 
 if __name__ == '__main__':
     sql = DB_Ops()
-#     data = sql.insert_one_dept({
-#     "department_id": 100001,
-#     "department_name": "Technical",
-#     "employee_role": "Software1",
-#     "employee_salary": 15000
-#   })
+    res = sql.insert_one_emp({
+    "date_of_birth": "2003-02-20 00:00:00",
+    "employee_role": "Finance Manager",
+    "first_name": "Shankar",
+    "gender": "Male",
+    "department_id": 100001,
+    "id": 111,
+    "last_name": "M"})
+    print(res)
+    res1 = sql.insert_one_addr({
+        "e_id": 111,
+        "house_no": 100,
+        "pincode": 641001,
+        "state": "TN",
+        "city": "Chennai",
+        "country": "India",
+        "street_name": "Srinagar"
+    })
+    print(res1)
 #     print(data)
