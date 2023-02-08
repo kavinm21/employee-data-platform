@@ -64,12 +64,19 @@ def add_employee():
       return 'Content-Type not supported! Send JSON Content'
 
 
-@app.route('/api/updateDetails', methods=['POST', 'GET'])
-def update_details():
+@app.route('/api/delEmp', methods=['POST', 'GET'])
+def delete_details():
       content_type = request.headers.get('Content-Type')
       if content_type == 'application/json':
          emp_data = request.json
-         data = DB_Ops().update(emp_data)
+         data = DB_Ops().delete_one(emp_data)
+         if data=="Deleted Successfully!!":
+            return "Deleted Successfully!!"
+         else:
+            return 'OOPS!! Failed'
+      else:
+         return 'Content-Type not supported! Send JSON Content'
+
 '''
 
 if __name__ == '__main__':

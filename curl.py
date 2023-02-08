@@ -1,6 +1,7 @@
 import requests
 
-url = 'http://127.0.0.1:5001/api/addEmp'
+'''
+url = 'http://127.0.0.1:5000/api/addEmp'
 json = {
     "city": "Chennai",
     "country": "India",
@@ -20,6 +21,7 @@ json = {
 }
 x = requests.post(url, json=json)
 print(x)
+'''
 
 '''
 url = 'http://127.0.0.1:5001/api/updateDetails'
@@ -28,6 +30,23 @@ json = {
     "id" : 105
 }
 
+x = requests.post(url, json=json)
+print(x)
+'''
+
+url = 'http://127.0.0.1:5000/api/delEmp'
+json = {
+    "id" : 111
+}
+x = requests.post(url, json=json)
+print(x)
+
+'''
+url = 'http://127.0.0.1:5000/api/updateEmp'
+json = {
+    "id" : 107,
+    "last_name":"Umakanthan"
+}
 x = requests.post(url, json=json)
 print(x)
 '''

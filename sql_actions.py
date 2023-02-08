@@ -51,6 +51,27 @@ INSERT INTO
 VALUES
 ({},{},{},{},{},{},{});
 '''
+# DELETE FROM employee.*, address.* from employee e inner join address a on e.id = a.e_id where e.id = {}
+delete_one_query = '''
+DELETE from employee e where e.id = {}
+'''
+update_query_emp = '''
+update employee
+set {} = {}
+where id = {}
+'''
+
+update_query_dept = '''
+update department
+set {} = {}
+where department_id = {}
+'''
+
+update_query_addr = '''
+update address
+set {} = {}
+where e_id = {}
+'''
 
 
 host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
@@ -133,7 +154,7 @@ class DB_Ops:
     def insert_one_addr(self, addr_data):
         try:
             cursor = self.connection.cursor()
-            query = insert_one_addr_query.format(addr_data['e_id'],
+            query = insert_one_addr_query.format(addr_data['id'],
                                                 addr_data['house_no'],
                                                 "'"+addr_data['street_name']+"'",
                                                 "'"+addr_data['city']+"'",
@@ -151,37 +172,23 @@ class DB_Ops:
             print(f"Error: '{err}'")
         return result
 
-#    def update(self, emp_data):
-#    emp     
-#        try:
-#            cursor = self.connection.cursor()
-#            query = 'UPDATE '+ 
+    def delete_one(self, emp_data):
+        try:
+            cursor = self.connection.cursor()
+            query = delete_one_query.format(emp_data['id'])
+            cursor.execute(query)
+            cursor.connection.commit()
+            cursor.close()
+            result = "Deleted Successfully!!"
+        except Exception as err:
+            result = err
+            print(f"Error: '{err}'")
+        return result
 
     def __del__(self):
         self.connection.close()
         print('Closing MySQL Connection')
 
-
-
 if __name__ == '__main__':
     sql = DB_Ops()
-    res = sql.insert_one_emp({
-    "date_of_birth": "2003-02-20 00:00:00",
-    "employee_role": "Finance Manager",
-    "first_name": "Shankar",
-    "gender": "Male",
-    "department_id": 100001,
-    "id": 111,
-    "last_name": "M"})
-    print(res)
-    res1 = sql.insert_one_addr({
-        "e_id": 111,
-        "house_no": 100,
-        "pincode": 641001,
-        "state": "TN",
-        "city": "Chennai",
-        "country": "India",
-        "street_name": "Srinagar"
-    })
-    print(res1)
 #     print(data)
