@@ -50,7 +50,6 @@ def add_employee():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         emp_data = request.json
-        #emp_data = jsonify(data)
         result_emp = DB_Ops().insert_one_emp(emp_data)
         print(result_emp)
         result_dept = DB_Ops().insert_one_dept(emp_data)

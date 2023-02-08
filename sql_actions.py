@@ -12,6 +12,9 @@ INNER JOIN department d ON
 INNER JOIN address a ON
     e.id = a.e_id
 '''
+
+query_dpt = '''SELECT EXISTS(SELECT * FROM department d WHERE d.department_id={})'''
+
 insert_one_dept_query = '''
 INSERT INTO
     department (department_id, department_name, employee_salary)
@@ -65,14 +68,19 @@ class DB_Ops:
         except Exception as err:
             print(f"Error: '{err}'")
 
-    def fetch_one(self, emp_id):
+    def fetch_one(self, id, select_query=selectall_query):
         cursor = self.connection.cursor()
-        query = selectall_query + " where e.id = %i"
-        print(emp_id, " Query:\n", query,sep='')
-        cursor.execute(query, (emp_id,))
-        result = [dict((cursor.description[i][0], value)
+        if select_query == selectall_query:
+            query = select_query + " where e.id = {}".format(id)
+            cursor.execute(query)
+            result = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
+        else:
+             query = select_query.format(id)
+             return(cursor.execute(query))
+       # print(" Query:\n", query,sep='')
         cursor.close()
+        return result
 
     def fetch_all(self):
         cursor = self.connection.cursor()
@@ -104,14 +112,17 @@ class DB_Ops:
 
     def insert_one_dept(self, dept_data):
         try:
-            cursor = self.connection.cursor()
-            query = insert_one_dept_query.format(dept_data['department_id'],
-                                                "'"+dept_data['department_name']+"'",
-                                                dept_data['employee_salary']
-                                                )
-            cursor.execute(query)
-            cursor.close()
-            result = "Successfully inserted!!"
+            if(self.fetch_one(dept_data['department_id'], query_dpt)==1):
+                result = 'Department already exists'
+            else:
+                cursor = self.connection.cursor()
+                query = insert_one_dept_query.format(dept_data['department_id'],
+                                                    "'"+dept_data['department_name']+"'",
+                                                    dept_data['employee_salary']
+                                                    )
+                cursor.execute(query)
+                cursor.close()
+                result = "Successfully inserted!!"
         except Exception as err:
             result = err
             print(f"Error: '{err}'")
@@ -128,6 +139,7 @@ class DB_Ops:
                                                 "'"+addr_data['country']+"'",
                                                 addr_data['pincode']
                                                 )
+            print(query)
             cursor.execute(query)
             cursor.close()
             result = "Successfully inserted!!"
@@ -135,18 +147,23 @@ class DB_Ops:
             result = err
             print(f"Error: '{err}'")
         return result
-'''
-    def update(self, emp_data):
-        try:
-            cursor = self.connection.cursor()
-            query = 'UPDATE '+ 
+#    def update(self, emp_data):
+#        try:
+#            cursor = self.connection.cursor()
+#            query = 'UPDATE '+ 
+
     def __del__(self):
         self.connection.close()
         print('Closing MySQL Connection')
-'''
+
 
 
 if __name__ == '__main__':
     sql = DB_Ops()
-    data = sql.fetch_one('105')
-    print(data)
+#     data = sql.insert_one_dept({
+#     "department_id": 100001,
+#     "department_name": "Technical",
+#     "employee_role": "Software1",
+#     "employee_salary": 15000
+#   })
+#     print(data)

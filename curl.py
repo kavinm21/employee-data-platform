@@ -5,7 +5,7 @@ json = {
     "city": "Chennai",
     "country": "India",
     "date_of_birth": "2003-02-20 00:00:00",
-    "department_id": 100010,
+    "department_id": 10000,
     "department_name": "Finance",
     "employee_role": "Finance Manager",
     "employee_salary": 15000.0,
