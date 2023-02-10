@@ -1,5 +1,6 @@
 import requests
 
+##addEmployee
 '''
 url = 'http://127.0.0.1:5000/api/addEmp'
 json = {
@@ -23,8 +24,21 @@ x = requests.post(url, json=json)
 print(x)
 '''
 
+###Fetch one
 '''
-url = 'http://127.0.0.1:5001/api/updateDetails'
+url = 'http://127.0.0.1:5000/api/fetchone'
+json = {
+    "id" : 108
+}
+
+x = requests.post(url, json=json)
+print(x.text)
+
+'''
+
+#UpdateDetails - Under progress
+'''
+url = 'http://127.0.0.1:5000/api/updateDetails'
 json = {
     "city" : "Hyderabad",
     "id" : 105
@@ -33,14 +47,16 @@ json = {
 x = requests.post(url, json=json)
 print(x)
 '''
-
+#Delete employee
+'''
 url = 'http://127.0.0.1:5000/api/delEmp'
 json = {
     "id" : 111
 }
 x = requests.post(url, json=json)
 print(x)
-
+'''
+#UpdateDetails - Under progress
 '''
 url = 'http://127.0.0.1:5000/api/updateEmp'
 json = {
