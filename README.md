@@ -19,4 +19,10 @@ URL Suffix     | Functions
 branch-aws has been deployed into vercel.
 Fetchone and fetchall functionalities are currently active and the rest are under development
 
+## API Usage:
 
+1. fetchall
+    '''
+    send a **GET request** to  https://employee-data-platform.vercel.app/api/fetchall
+    the data is returned in **JSON format**
+    '''
