@@ -74,8 +74,10 @@ where e_id = {}
 '''
 
 
-host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
-user_name = 'admin'
+#host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
+host_name = 'mysql-vercel.mysql.database.azure.com'
+#user_name = 'admin'
+user_name = 'admin1'
 pword = 'Password1!'
 
 
@@ -84,7 +86,8 @@ class DB_Ops:
         self.connection = None
         try:
             self.connection = pymysql.connect(
-                host=host_name, user=user_name, passwd=pword, database='employee_db')
+                host=host_name, user=user_name, passwd=pword, #database='employee_db',
+                 ssl_ca = 'DigiCertGlobalRootCA.crt.pem', ssl_verify_cert = True)
             print("Connected to MySQL")
         except Exception as err:
             print(f"Error: '{err}'")
