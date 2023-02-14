@@ -10,11 +10,11 @@ SQL, Flask, Python
 https://employee-data-platform.vercel.app
 
 URL Suffix     | Functions
-------------- | -------------
+-------------  | -------------
 /api/fetchall  | Displays all the data in JSON format
 /api/fetchone  | Displays data in JSON format given an argument
 /api/insertone | Inserts an employee record
-/api/update    | Updates the employee record
+/api/delete    | Deletes the employee record
 
 branch-aws has been deployed into vercel.
 Fetchone and fetchall functionalities are currently active and the rest are under development
