@@ -12,8 +12,10 @@ INNER JOIN department d ON
 INNER JOIN address a ON
     e.id = a.e_id
 '''
-host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
-user_name = 'admin'
+#host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
+host_name = 'mysql-vercel.mysql.database.azure.com' 
+user_name = 'admin1' 
+#user_name = 'admin'
 pword = 'Password1!'
 
 
