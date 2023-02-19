@@ -1,4 +1,5 @@
 import pymysql
+import os
 
 selectall_query = '''
 SELECT
@@ -78,7 +79,7 @@ where e_id = {}
 host_name = 'mysql-vercel.mysql.database.azure.com'
 #user_name = 'admin'
 user_name = 'admin1'
-pword = 'Password1!'
+pword = os.environ.get("SQLKey")
 
 
 class DB_Ops:
