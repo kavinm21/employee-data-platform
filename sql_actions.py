@@ -25,7 +25,8 @@ class DB_Ops:
         self.connection = None
         try:
             self.connection = pymysql.connect(
-                host=host_name, user=user_name, passwd=pword, database='employee_db')
+                host=host_name, user=user_name, passwd=pword, #database='employee_db',
+                 ssl_ca = 'DigiCertGlobalRootCA.crt.pem', ssl_verify_cert = True)
             print("Connected to MySQL")
         except Error as err:
             print(f"Error: '{err}'")
