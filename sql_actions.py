@@ -1,4 +1,5 @@
 import pymysql
+import os
 
 selectall_query = '''
 SELECT
@@ -16,7 +17,7 @@ INNER JOIN address a ON
 host_name = 'mysql-vercel.mysql.database.azure.com' 
 user_name = 'admin1' 
 #user_name = 'admin'
-pword = 'Password1!'
+pword = os.environ.get("SQLKey")
 
 
 class DB_Ops:
