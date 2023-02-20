@@ -16,7 +16,7 @@ URL Suffix     | Functions
 /api/insertone | Inserts an employee record
 /api/delete    | Deletes the employee record
 
-branch-aws has been deployed into vercel.
+Deploy has been deployed into vercel.
 Fetchone and fetchall functionalities are currently active and the rest are under development
 
 
