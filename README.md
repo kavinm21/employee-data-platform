@@ -8,6 +8,7 @@ SQL, Flask, Python
 
 
 https://employee-data-platform.vercel.app
+https://emp-data-app.azurewebsites.net/
 
 URL Suffix     | Functions
 -------------  | -------------
