@@ -4,7 +4,7 @@
 	margin: 0 auto;
 	height: 500px;
 	width: 400px;
-	background-color: #009933;
+	background-color: #bdc0c0;
 	border-radius: 10px;
 }
 
@@ -12,21 +12,21 @@
 	margin: 0 auto;
 	height: 720px;
 	width: 400px;
-	background-color:#009933;
+	background-color:#bdc0c0;
 	border-radius: 10px;
 }
 
 .logintop{
 	height: 60px;
 	width: 400px;
-	background-color: #009933;
+	background-color: #bdc0c0;
 	color: #ffffff;
 }
 
 .loginbottom{
 	height: 60px;
 	width: 400px;
-	background-color: #009933;
+	background-color: #bdc0c0;
 	color: #ffffff;
 }
 
@@ -34,13 +34,13 @@
 .registertop{
 	height: 60px;
 	width: 400px;
-	background-color: #009933;
+	background-color: #bdc0c0;
 	color: #ffffff;
 }
 
 .textbox{
 	padding: 10px 40px;
-	background-color: #009933;
+	background-color: #bdc0c0;
 	border-radius: 10px;
 }
 
@@ -53,7 +53,7 @@
 
 .btn {
 	padding: 10px 40px;
-	background-color: #009933;
+	background-color: #bdc0c0;
 	color: #FFFFFF;
 	font-style: oblique;
 	font-weight: bold;
@@ -89,7 +89,7 @@
 .one .two{
 	width: 225px;
 	height: 100%;
-	background: #009933;
+	background: #c0ccc4;
 	padding: 30px 0px;
 	position: fixed;
 }
@@ -109,7 +109,7 @@
 }
 		
 .one .two .active{
-	background: #0a8032;
+	background: #c1d6c8;
 }
 
 .one .two ul li{
@@ -137,7 +137,7 @@
 .one .content .topbar{
 	text-align: center;
 	padding: 20px;
-	background: #00b33c;
+	background: #c1d6c8;
 	color: white;
 }
 		
@@ -146,7 +146,7 @@
 }
 
 .one .content .contentbar h1{
-	color: #11a844;
+	color: #c1d6c8;
 	text-align: center;
 	font-style: oblique;
 	font-weight: bold;
