@@ -87,10 +87,10 @@ class DB_Ops:
         self.connection = None
         try:
             self.connection = pymysql.connect(
-                host=host_name, user=user_name, passwd=pword, #database='employee_db',
+                host=host_name, user=user_name, passwd=pword, database='employee_db',
                  ssl_ca = 'DigiCertGlobalRootCA.crt.pem', ssl_verify_cert = True)
             print("Connected to MySQL")
-        except Exception as err:
+        except Error as err:
             print(f"Error: '{err}'")
 
     def fetch_one(self, id, select_query=selectall_query):
@@ -192,6 +192,7 @@ class DB_Ops:
     def __del__(self):
         self.connection.close()
         print('Closing MySQL Connection')
+
 
 if __name__ == '__main__':
     sql = DB_Ops()
