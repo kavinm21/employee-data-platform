@@ -38,4 +38,5 @@ Fetchone and fetchall functionalities are currently active and the rest are unde
     {
         "id": <insert employee id here>
     }
+    
     ```
