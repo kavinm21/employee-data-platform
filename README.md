@@ -39,3 +39,35 @@ Fetchone and fetchall functionalities are currently active and the rest are unde
         "id": <insert employee id here>
     }
     ```
+3. addEmp:
+    ```
+    send a post request to https://employee-data-platform.vercel.app/api/addEmp or https://emp-data-app.azurewebsites.net/api/addEmp
+    
+    Use content-type as JSON and send a JSON object of the following format:
+    {
+        "city": <insert employee city here>,
+        "country": <insert employee country here>,
+        "date_of_birth": <insert employee dob here>,
+        "department_id":  <insert department id here>,
+        "department_name": <insert department name here>,
+        "employee_role": <insert employee role here>,
+        "employee_salary": <insert employee salary here>,
+        "first_name": <insert employee first name here>,
+        "gender": <insert employee gender here>,
+        "house_no": <insert employee's house no. here>,
+        "id": <insert employee id here>,
+        "last_name": <insert employee last name here>,
+        "pincode": <insert employee's pincode here>,
+        "state": <insert employee's state here>,
+        "street_name": <insert employee's street name here>
+    }
+    ```
+4. delEmp:
+    ```
+    send a post request to https://employee-data-platform.vercel.app/api/delEmp or https://emp-data-app.azurewebsites.net/api/delEmp
+     
+    Use content-type as JSON and send a JSON object of the following format:
+    {
+        "id": <insert employee id to be deleted>
+    }
+    ```
