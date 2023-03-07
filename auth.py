@@ -54,7 +54,7 @@ class Auth:
         except Exception as err:
             result = err
         return result
-    def authorize(self, key, uid):
+    def authorize(self, key=None, uid=None):
         try:
             cursor = self.connection.cursor()
             if key is not None:
