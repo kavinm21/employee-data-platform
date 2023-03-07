@@ -74,7 +74,7 @@ def delete_details():
     else:
         return 'Content-Type not supported! Send JSON Content'
 
-@app.route('/api/get_keys', methods=['POST'])
+@app.route('/api/get_keys', methods = ['GET', 'POST'])
 def get_api_keys():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
@@ -84,7 +84,7 @@ def get_api_keys():
     else:
         return 'Content-Type not supported! Send JSON Content'
 
-@app.route('/api/add_user', methods = ['POST'])
+@app.route('/api/add_user', methods = ['GET', 'POST'])
 def addUser():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
