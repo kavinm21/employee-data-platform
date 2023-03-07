@@ -26,15 +26,22 @@ Fetchone and fetchall functionalities are currently active and the rest are unde
 1. fetchall:
 
     ```
-    send a GET request to  https://employee-data-platform.vercel.app/api/fetchall or https://emp-data-app.azurewebsites.net/api/fetchall
-
-    the data is returned in JSON format
+    send a GET request to 
+        https://employee-data-platform.vercel.app/api/fetchall 
+        or 
+        https://emp-data-app.azurewebsites.net/api/fetchall
     ```
+    the data is returned in JSON format
+
 2. fetchone:
     ```
-    send a POST request to https://employee-data-platform.vercel.app/api/fetchone or https://emp-data-app.azurewebsites.net/api/fetchone
-
+    send a POST request to 
+        https://employee-data-platform.vercel.app/api/fetchone 
+        or 
+        https://emp-data-app.azurewebsites.net/api/fetchone
+    ```
     Use content-type as JSON and send a JSON object of the following format:
+    ```
     {
         "id": <insert employee id here>
     }
@@ -42,9 +49,13 @@ Fetchone and fetchall functionalities are currently active and the rest are unde
     ```
 3. addEmp:
     ```
-    send a POST request to https://employee-data-platform.vercel.app/api/addEmp or https://emp-data-app.azurewebsites.net/api/addEmp
-    
+    send a POST request to 
+        https://employee-data-platform.vercel.app/api/addEmp 
+        or 
+        https://emp-data-app.azurewebsites.net/api/addEmp
+    ```
     Use content-type as JSON and send a JSON object of the following format:
+    ```
     {
         "city": <insert employee city here>,
         "country": <insert employee country here>,
@@ -65,9 +76,13 @@ Fetchone and fetchall functionalities are currently active and the rest are unde
     ```
 4. delEmp:
     ```
-    send a POST request to https://employee-data-platform.vercel.app/api/delEmp or https://emp-data-app.azurewebsites.net/api/delEmp
-     
+    send a POST request to 
+        https://employee-data-platform.vercel.app/api/delEmp 
+        or
+        https://emp-data-app.azurewebsites.net/api/delEmp
+    ``` 
     Use content-type as JSON and send a JSON object of the following format:
+    ```
     {
         "id": <insert employee id to be deleted>
     }
