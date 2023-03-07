@@ -9,7 +9,7 @@ add_key = '''
 INSERT INTO keystore (
     passkey,
     username
-)
+) VALUES({}, {})
 '''
 
 get_key_name = '''
@@ -45,7 +45,7 @@ class Auth:
         try:
             key = secrets.token_urlsafe(16)
             cursor = self.connection.cursor()
-            query = get_key.format(uid)
+            query = add_key.format(key, uid)
             cursor.execute(query)
             cursor.connection.commit()
             cursor.close()
