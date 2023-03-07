@@ -80,7 +80,7 @@ def get_api_keys():
     if content_type == 'application/json':
         token_data = request.json
         data = get_apis(token_data)
-        return data
+        return jsonify(data)
     else:
         return 'Content-Type not supported! Send JSON Content'
 
