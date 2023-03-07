@@ -109,7 +109,7 @@ def add_user(dict_obj):
     name = dict_obj.pop('user', '-1')
     if name == '-1':
         return 'Invalid format used'
-    if Auth().authorize(name) == 'Invalid API Key':
+    if Auth().authorize(uid=name) == 'Invalid API Key':
         msg = Auth().create_key(name)
     else:
         msg = 'Key already present'
