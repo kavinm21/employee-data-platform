@@ -40,6 +40,7 @@ class Auth:
             self.connection = pymysql.connect(
                 host=host_name, user=user_name, passwd=pword, database='auth',
                  ssl_ca = 'DigiCertGlobalRootCA.crt.pem', ssl_verify_cert = True)
+            print("Opened MySQL connection")
         except Error as err:
             print(f"Error during Authentication: '{err}'")
     def create_key(self, uid):
@@ -67,6 +68,7 @@ class Auth:
             query_result = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
             output = query_result['count(*)']
+            print("authorize output: ", output)
             if output != 0:
                 result = '1'
             else:
@@ -81,6 +83,7 @@ class Auth:
             cursor.execute(query)
             name = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()][0]['username']
+            print("fetch key match: ", name)
             if name == 'MASTER':
                 cursor.execute(table)
                 result = [dict((cursor.description[i][0], value)
@@ -109,7 +112,8 @@ def add_user(dict_obj):
     name = dict_obj.pop('user', '-1')
     if name == '-1':
         return 'Invalid format used'
-    if Auth().authorize(uid=name) == 'Invalid API Key':
+    status = Auth().authorize(uid=name)
+    if status == 'Invalid API Key':
         msg = Auth().create_key(name)
     else:
         msg = 'Key already present'
