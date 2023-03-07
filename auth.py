@@ -1,5 +1,6 @@
 import secrets
 import os
+import pymysql
 
 host_name = 'mysql-vercel.mysql.database.azure.com'
 user_name = 'admin1'
