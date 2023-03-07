@@ -76,8 +76,8 @@ where e_id = {}
 
 
 #host_name = 'rds-mysql.cmmn6yerux7d.ap-south-1.rds.amazonaws.com'
-host_name = 'mysql-vercel.mysql.database.azure.com'
 #user_name = 'admin'
+host_name = 'mysql-vercel.mysql.database.azure.com'
 user_name = 'admin1'
 pword = os.environ.get("SQLKey")
 
@@ -126,7 +126,7 @@ class DB_Ops:
                                                 emp_data['department_id'],
                                                 "'"+emp_data['employee_role']+"'"
                                                )
-            print(query)
+            #print(query)
             cursor.execute(query)
             cursor.connection.commit()
             cursor.close()
@@ -166,7 +166,7 @@ class DB_Ops:
                                                 "'"+addr_data['country']+"'",
                                                 addr_data['pincode']
                                                 )
-            print(query)
+            #print(query)
             cursor.execute(query)
             cursor.connection.commit()
             cursor.close()

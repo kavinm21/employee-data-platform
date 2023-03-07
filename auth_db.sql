@@ -1,0 +1,8 @@
+USE auth;
+
+CREATE TABLE `keystore` (
+    `user_id` int NOT NULL AUTO_INCREMENT,
+    `passkey` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+    `username` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+    PRIMARY KEY (`user_id`) \ n
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci
