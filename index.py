@@ -57,6 +57,15 @@ def delete_details():
     else:
         return 'Content-Type not supported! Send JSON Content'
 
+@app.route('/api/update', methods=['POST', 'GET'])
+def update_details():
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':
+        emp_data = request.json
+        data = DB_Ops().update(emp_data)
+        return data
+    else:
+        return 'Content-Type not supported! Send JSON Content'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)

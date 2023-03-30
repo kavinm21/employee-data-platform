@@ -1,11 +1,13 @@
+
 # employee-data-platform
+
 A data store app for fulfilling Cloud Computing Coursework Requirements
 
-# Tech Stack:
+# Tech Stack
+
 SQL, Flask, Python
 
-# API:
-
+# API
 
 Vercel: https://employee-data-platform.vercel.app/
 
@@ -21,7 +23,7 @@ URL Suffix     | Functions
 Deploy Branch is deployed to the links mentioned above.
 Fetchone and fetchall functionalities are currently active and the rest are under development.
 
-## API Usage:
+## API Usage
 
 1. fetchall:
 

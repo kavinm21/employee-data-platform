@@ -58,19 +58,19 @@ DELETE from employee e where e.id = {}
 '''
 update_query_emp = '''
 update employee
-set {} = {}
+set {}
 where id = {}
 '''
 
 update_query_dept = '''
 update department
-set {} = {}
+set {}
 where department_id = {}
 '''
 
 update_query_addr = '''
 update address
-set {} = {}
+set {}
 where e_id = {}
 '''
 
@@ -184,6 +184,49 @@ class DB_Ops:
             cursor.connection.commit()
             cursor.close()
             result = "Deleted Successfully!!"
+        except Exception as err:
+            result = err
+            print(f"Error: '{err}'")
+        return result
+
+    def update(self, emp_data):
+        try:
+            up_flag = False
+            cursor = self.connection.cursor()
+            emp = {key: emp_data[key] for key in ['id', 'first_name', 'last_name', 'date_of_birth', 'gender', 'department_id', 'employee_role']}
+            dep = {key: emp_data[key] for key in ['department_id', 'department_name', 'employee_salary']}
+            add = {key: emp_data[key] for key in ['id', 'house_no', 'street_name', 'city', 'state', 'country', 'pincode']}
+            if 'id' in add.keys():
+                add['e_id'] = add.pop('id')
+            if len(emp) > 1:
+                args = ""
+                for key, val in emp.items():
+                    if key != 'id':
+                        args = args + key + " = '" + val + "', " 
+                query = update_query_emp.format(args, emp['id'])
+                cursor.execute(query)
+                up_flag = True
+            if len(add) > 1:
+                args = ""
+                for key, val in add.items():
+                    if key != 'e_id':
+                        args = args + key + " = '" + val + "', " 
+                query = update_query_emp.format(args, add['e_id'])
+                cursor.execute(query)
+                up_flag = True
+            if len(dep) > 1:
+                args = ""
+                for key, val in dep.items():
+                    if key != 'department_id':
+                        args = args + key + " = '" + val + "', " 
+                query = update_query_emp.format(args, dep['department_id'])
+                cursor.execute(query)
+                up_flag = True
+            cursor.close()
+            if up_flag:
+                return "Updated Successfully!!"
+            else:
+                return "No Update possible, send enough parameters and proper column names"
         except Exception as err:
             result = err
             print(f"Error: '{err}'")
