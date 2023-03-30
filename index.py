@@ -13,7 +13,6 @@ def fetch_all():
     data = DB_Ops().fetch_all()
     return jsonify(data)
 
-
 @app.route('/api/fetchone', methods=['GET', 'POST'])
 def fetch_one():
     content_type = request.headers.get('Content-Type')
@@ -25,7 +24,7 @@ def fetch_one():
         return 'Content-Type not supported! Send JSON Content'
 
 
-@app.route('/api/addEmp', methods=['POST', 'GET'])
+@app.route('/api/insert', methods=['POST', 'GET'])
 def add_employee():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
@@ -44,7 +43,7 @@ def add_employee():
         return 'Content-Type not supported! Send JSON Content'
 
 
-@app.route('/api/delEmp', methods=['POST', 'GET'])
+@app.route('/api/delete', methods=['POST', 'GET'])
 def delete_details():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':

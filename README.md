@@ -17,8 +17,9 @@ URL Suffix     | Functions
 -------------  | -------------
 /api/fetchall  | Displays all the data in JSON format
 /api/fetchone  | Displays data in JSON format given an argument
-/api/insertone | Inserts an employee record
+/api/insert    | Inserts an employee record
 /api/delete    | Deletes the employee record
+/api/update    | Updates the employee record
 
 Deploy Branch is deployed to the links mentioned above.
 Fetchone and fetchall functionalities are currently active and the rest are under development.
@@ -28,25 +29,36 @@ Fetchone and fetchall functionalities are currently active and the rest are unde
 1. fetchall:
 
     ```
-    send a GET request to  https://employee-data-platform.vercel.app/api/fetchall or https://emp-data-app.azurewebsites.net/api/fetchall
-
-    the data is returned in JSON format
+    send a GET request to
+        https://employee-data-platform.vercel.app/api/fetchall
+        or
+        https://emp-data-app.azurewebsites.net/api/fetchall
     ```
+    the data is returned in JSON format
+
 2. fetchone:
     ```
-    send a POST request to https://employee-data-platform.vercel.app/api/fetchone or https://emp-data-app.azurewebsites.net/api/fetchone
-
+    send a POST request to 
+        https://employee-data-platform.vercel.app/api/fetchone 
+        or 
+        https://emp-data-app.azurewebsites.net/api/fetchone
+    ```
     Use content-type as JSON and send a JSON object of the following format:
+    ```
     {
         "id": <insert employee id here>
     }
     
     ```
-3. addEmp:
+3. insert:
     ```
-    send a POST request to https://employee-data-platform.vercel.app/api/addEmp or https://emp-data-app.azurewebsites.net/api/addEmp
-    
+    send a POST request to 
+        https://employee-data-platform.vercel.app/api/insert 
+        or 
+        https://emp-data-app.azurewebsites.net/api/insert
+    ```
     Use content-type as JSON and send a JSON object of the following format:
+    ```
     {
         "city": <insert employee city here>,
         "country": <insert employee country here>,
@@ -65,12 +77,30 @@ Fetchone and fetchall functionalities are currently active and the rest are unde
         "street_name": <insert employee's street name here>
     }
     ```
-4. delEmp:
+4. delete:
     ```
-    send a POST request to https://employee-data-platform.vercel.app/api/delEmp or https://emp-data-app.azurewebsites.net/api/delEmp
-     
+    send a POST request to 
+        https://employee-data-platform.vercel.app/api/delete 
+        or
+        https://emp-data-app.azurewebsites.net/api/delete
+    ``` 
     Use content-type as JSON and send a JSON object of the following format:
+    ```
     {
         "id": <insert employee id to be deleted>
+    }
+    ```
+5. update:
+    ```
+    send a POST request to
+        https://employee-data-platform.vercel.app/api/update 
+        or
+        https://emp-data-app.azurewebsites.net/api/update
+    ```
+    Use content-type as JSON and send a JSON object of the following format:
+    ```
+    {
+        "id": <insert employee id to be deleted>
+        <insert column to use> : <insert new value for column here>
     }
     ```
