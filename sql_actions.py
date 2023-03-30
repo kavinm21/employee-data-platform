@@ -142,7 +142,7 @@ class DB_Ops:
             cursor.execute("SELECT COUNT(*) FROM department where department_id = {}".format(dept_data['department_id']))
             res = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
-            if res['COUNT(*)'] > 0:
+            if res[0]['COUNT(*)'] > 0:
                 result = 'Department already exists'
             else:
                 query = insert_one_dept_query.format(dept_data['department_id'],
