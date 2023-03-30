@@ -138,23 +138,21 @@ class DB_Ops:
 
     def insert_one_dept(self, dept_data):
         try:
-            conn = self.connection.cursor()
-            conn.execute("SELECT COUNT(*) FROM department where department_id = {}".format(dept_data['department_id']))
+            cursor = self.connection.cursor()
+            cursor.execute("SELECT COUNT(*) FROM department where department_id = {}".format(dept_data['department_id']))
             res = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
-            conn.close()
             if res['COUNT(*)'] > 0:
                 result = 'Department already exists'
             else:
-                cursor = self.connection.cursor()
                 query = insert_one_dept_query.format(dept_data['department_id'],
                                                     "'"+dept_data['department_name']+"'",
                                                     dept_data['employee_salary']
                                                     )
                 cursor.execute(query)
                 cursor.connection.commit()
-                cursor.close()
                 result = "Successfully inserted department!!"
+            cursor.close()
         except Exception as err:
             result = err
             print(f"Error: '{err}'")
