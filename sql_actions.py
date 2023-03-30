@@ -139,7 +139,7 @@ class DB_Ops:
     def insert_one_dept(self, dept_data):
         try:
             conn = self.connection.cursor()
-            conn.execute("SELECT COUNT(*) FROM department where department_id = "+ dept_data['department_id'])
+            conn.execute("SELECT COUNT(*) FROM department where department_id = {}".format(dept_data['department_id']))
             res = [dict((cursor.description[i][0], value)
                        for i, value in enumerate(row)) for row in cursor.fetchall()]
             if res['COUNT(*)'] > 0:
