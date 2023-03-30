@@ -138,7 +138,11 @@ class DB_Ops:
 
     def insert_one_dept(self, dept_data):
         try:
-            if(self.fetch_one(dept_data['department_id'], query_dpt)==1):
+            conn = self.connection.cursor()
+            conn.execute("SELECT COUNT(*) FROM department where department_id = "+ dept_data['department_id'])
+            res = [dict((cursor.description[i][0], value)
+                       for i, value in enumerate(row)) for row in cursor.fetchall()]
+            if res['COUNT(*)'] > 0:
                 result = 'Department already exists'
             else:
                 cursor = self.connection.cursor()
